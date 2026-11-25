@@ -56,8 +56,19 @@
 <section id="c1-b" class="s p"><div class="w">
 <p class="k">Puzle · La vitrina</p><h2>Polvo blanco</h2>
 <div class="pn"><svg><use href="#gem"></svg><svg><use href="#eye"></svg></div>
-<p>Marca solo donde hay polvo: cerradura y borde. El cristal y el marco están limpios.</p>
-<div class="pz"><label><input type="checkbox" class="on">Cerradura</label><label><input type="checkbox" class="off">Cristal</label><label><input type="checkbox" class="on">Borde</label><label><input type="checkbox" class="off">Marco</label><p class="rv">Es polvo blanco de botica, de los que solo maneja un médico. Apunta a Hale.</p></div>
+<p>La Lágrima de Ámbar se partió en cuatro fragmentos. Reconstruye la joya: selecciona una pieza y luego otra para intercambiarlas.</p>
+<div class="puzzle-card">
+  <div class="gem-board" id="gem-board" aria-label="Rompecabezas de cuatro piezas">
+    <button class="gem-piece" type="button" data-piece="2" aria-label="Fragmento 3"><svg viewBox="0 50 50 50" aria-hidden="true"><polygon points="30,5 70,5 93,35 50,95 7,35"/><path d="M30 5 50 35 70 5M7 35h86M50 35v60"/></svg></button>
+    <button class="gem-piece" type="button" data-piece="0" aria-label="Fragmento 1"><svg viewBox="0 0 50 50" aria-hidden="true"><polygon points="30,5 70,5 93,35 50,95 7,35"/><path d="M30 5 50 35 70 5M7 35h86M50 35v60"/></svg></button>
+    <button class="gem-piece" type="button" data-piece="3" aria-label="Fragmento 4"><svg viewBox="50 50 50 50" aria-hidden="true"><polygon points="30,5 70,5 93,35 50,95 7,35"/><path d="M30 5 50 35 70 5M7 35h86M50 35v60"/></svg></button>
+    <button class="gem-piece" type="button" data-piece="1" aria-label="Fragmento 2"><svg viewBox="50 0 50 50" aria-hidden="true"><polygon points="30,5 70,5 93,35 50,95 7,35"/><path d="M30 5 50 35 70 5M7 35h86M50 35v60"/></svg></button>
+  </div>
+  <p class="game-status" id="gem-status" aria-live="polite">El broche está mezclado.</p>
+  <button class="game-reset" type="button" id="gem-reset">Mezclar de nuevo</button>
+  <p class="game-reward" id="gem-result" hidden>¡Encaja! Detrás de la joya hay polvo blanco de botica. Hale podía conseguirlo.</p>
+</div>
+
 <a class="o" href="#c1">Volver a investigar</a>
 </div></section>
 <section id="c1-d" class="s p"><div class="w">
@@ -117,8 +128,18 @@
 <section id="c2-d" class="s h"><div class="w">
 <p class="k">Puzle · El ascensor</p><h2>Una nota en el espejo</h2>
 <div class="pn"><svg><use href="#eye"></svg><svg><use href="#key"></svg></div>
-<p>En el panel hay un botón aún iluminado. ¿Cuál?</p>
-<div class="pz r"><label><input type="radio" name="d2" class="no">Planta baja</label><label><input type="radio" name="d2" class="ok">Garaje</label><label><input type="radio" name="d2" class="no">Habitación 7</label><p class="rv">«Si lees esto, no me busques. —E.» El ascensor bajó al garaje a las 21:47. Allí, tirada, la llave de servicio de Dara.</p></div>
+<p>El ascensor se detuvo entre plantas. Guía al detective por el pasillo hasta la salida del garaje. Usa las flechas o los botones.</p>
+<div class="maze-card" id="maze-card">
+  <div class="maze-grid" id="maze-grid" role="img" aria-label="Laberinto del hotel, lleva al detective desde la entrada hasta el garaje"></div>
+  <div class="maze-controls" aria-label="Controles del laberinto">
+    <button type="button" data-move="up" aria-label="Arriba">▲</button>
+    <button type="button" data-move="left" aria-label="Izquierda">◀</button>
+    <button type="button" data-move="down" aria-label="Abajo">▼</button>
+    <button type="button" data-move="right" aria-label="Derecha">▶</button>
+  </div>
+  <p class="game-status" id="maze-status" aria-live="polite">D = detective · G = garaje · Muévete con las flechas del teclado o los botones.</p>
+  <p class="game-reward" id="maze-result" hidden>¡Llegaste al garaje! «Si lees esto, no me busques. —E.» El ascensor bajó a las 21:47. Allí está la llave de servicio de Dara.</p>
+</div>
 <a class="o" href="#c2">Volver a investigar</a>
 </div></section>
 <section id="c2-x" class="s h"><div class="w">
@@ -244,6 +265,107 @@
     const heading = page.querySelector('h1, h2');
     if (art && heading) art.dataset.caption = heading.textContent.trim();
   });
+
+  const gemBoard = document.getElementById('gem-board');
+  if (gemBoard) {
+    const resetButton = document.getElementById('gem-reset');
+    const gemStatus = document.getElementById('gem-status');
+    const gemResult = document.getElementById('gem-result');
+    let selected = null;
+    const initialOrder = [2, 0, 3, 1];
+    const piecesById = new Map([...gemBoard.children].map(piece => [Number(piece.dataset.piece), piece]));
+    function arrangeGem(order) {
+      gemBoard.replaceChildren(...order.map(id => piecesById.get(id)));
+      selected = null;
+      gemBoard.querySelectorAll('.selected').forEach(piece => piece.classList.remove('selected'));
+    }
+    function checkGem() {
+      const solved = [...gemBoard.children].every((piece, slot) => Number(piece.dataset.piece) === slot);
+      if (solved) {
+        gemBoard.classList.add('solved');
+        gemBoard.querySelectorAll('button').forEach(piece => { piece.disabled = true; });
+        gemStatus.textContent = 'Rompecabezas resuelto.';
+        gemResult.hidden = false;
+      }
+      return solved;
+    }
+    gemBoard.addEventListener('click', event => {
+      const piece = event.target.closest('.gem-piece');
+      if (!piece || piece.disabled) return;
+      if (!selected) {
+        selected = piece;
+        piece.classList.add('selected');
+        gemStatus.textContent = `Fragmento ${Number(piece.dataset.piece) + 1} seleccionado. Elige otra pieza para intercambiar.`;
+        return;
+      }
+      if (selected === piece) {
+        piece.classList.remove('selected');
+        selected = null;
+        gemStatus.textContent = 'Elige una pieza para mover.';
+        return;
+      }
+      const order = [...gemBoard.children];
+      const first = order.indexOf(selected), second = order.indexOf(piece);
+      [order[first], order[second]] = [order[second], order[first]];
+      arrangeGem(order.map(item => Number(item.dataset.piece)));
+      gemStatus.textContent = 'Piezas intercambiadas. Sigue reconstruyendo la joya.';
+      checkGem();
+    });
+    resetButton.addEventListener('click', () => {
+      gemBoard.classList.remove('solved');
+      gemBoard.querySelectorAll('button').forEach(piece => { piece.disabled = false; });
+      gemResult.hidden = true;
+      gemStatus.textContent = 'El broche está mezclado.';
+      arrangeGem(initialOrder);
+    });
+  }
+
+  const maze = document.getElementById('maze-grid');
+  if (maze) {
+    const walls = new Set(['0,1','0,2','0,4','0,5','1,3','1,4','1,5','2,1','2,3','2,5','3,1','3,5','4,1','4,2','4,3','4,5','5,3','5,5']);
+    const player = {row:0, col:0};
+    const goal = {row:6, col:6};
+    const status = document.getElementById('maze-status');
+    const reward = document.getElementById('maze-result');
+    let solved = false;
+    function drawMaze() {
+      maze.replaceChildren();
+      for (let row = 0; row < 7; row++) for (let col = 0; col < 7; col++) {
+        const cell = document.createElement('span');
+        cell.className = 'maze-cell';
+        if (walls.has(`${row},${col}`)) cell.classList.add('wall');
+        if (row === player.row && col === player.col) { cell.classList.add('maze-player'); cell.textContent = 'D'; }
+        else if (row === goal.row && col === goal.col) { cell.classList.add('maze-exit'); cell.textContent = 'G'; }
+        maze.append(cell);
+      }
+    }
+    function move(direction) {
+      if (solved) return;
+      const delta = {up:[-1,0],down:[1,0],left:[0,-1],right:[0,1]}[direction];
+      if (!delta) return;
+      const row = player.row + delta[0], col = player.col + delta[1];
+      if (row < 0 || row > 6 || col < 0 || col > 6 || walls.has(`${row},${col}`)) {
+        status.textContent = 'Camino bloqueado. Busca otra ruta.';
+        maze.classList.add('bump');
+        setTimeout(() => maze.classList.remove('bump'), 220);
+        return;
+      }
+      player.row = row; player.col = col;
+      drawMaze();
+      if (row === goal.row && col === goal.col) {
+        solved = true;
+        maze.classList.add('solved');
+        status.textContent = '¡Has encontrado la salida del garaje!';
+        reward.hidden = false;
+      } else status.textContent = 'Sigue la ruta hasta el garaje (G).';
+    }
+    document.querySelectorAll('#maze-card [data-move]').forEach(button => button.addEventListener('click', () => move(button.dataset.move)));
+    document.getElementById('maze-card').addEventListener('keydown', event => {
+      const moves = {ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};
+      if (moves[event.key]) { event.preventDefault(); move(moves[event.key]); }
+    });
+    drawMaze();
+  }
 
   function sceneId() {
     const id = location.hash.slice(1) || 'inicio';

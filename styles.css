@@ -222,3 +222,44 @@ body:has(.f:target) .home{background:#e4e0d5;color:#202227}
 .timer{background:#191a1c;color:#eee9db;border-color:#b68b4c}
 .timer.urgente{background:#712b25;border-color:#e3c989}.timer.agotado{background:#63252b;border-color:#e3c989}
 .detective-andante{left:12px;transition:left .25s linear}
+
+/* El paisaje triangular acompaña el desplazamiento de cada escena */
+.s::after{display:none}
+.w::after{content:"";position:absolute;z-index:-1;left:-10%;bottom:0;width:120%;height:22vmin;background:var(--b);clip-path:polygon(0 60%,35% 20%,60% 70%,100% 0,100% 100%,0 100%);animation:ws 6s ease-in-out infinite alternate;pointer-events:none}
+
+/* El triángulo queda fijo abajo como una pegatina durante el scroll */
+.s::after{display:block;position:fixed;z-index:0;left:-10%;bottom:0;width:120%;height:22vmin;background:var(--b);clip-path:polygon(0 60%,35% 20%,60% 70%,100% 0,100% 100%,0 100%);animation:ws 6s ease-in-out infinite alternate;pointer-events:none}
+.w::after{display:none}
+
+/* El fondo se mantiene visible pero siempre detrás del contenido */
+.s::after{z-index:0}
+.w{z-index:1}
+/* Opciones y pistas con aspecto de tarjetas de expediente */
+.o{position:relative;min-height:3.25rem;border:1px solid color-mix(in srgb,var(--fg) 55%,transparent);border-left:.55rem solid var(--a);border-radius:.2rem;background:linear-gradient(115deg,var(--fg),color-mix(in srgb,var(--fg) 88%,var(--a)));box-shadow:.25rem .3rem 0 color-mix(in srgb,var(--a) 72%,#171819);letter-spacing:.01em}
+.o::after{content:"↗";margin-left:auto;font-size:1.1rem;opacity:.55;transition:translate .2s,opacity .2s}
+.o:hover,.o:focus-visible{translate:.5rem -2px;box-shadow:.4rem .4rem 0 var(--a)}.o:hover::after,.o:focus-visible::after{translate:3px -3px;opacity:1}
+.pz,.puzzle-card,.maze-card{margin:1rem 0;padding:.85rem;border:2px solid var(--fg);border-radius:.35rem;background:linear-gradient(145deg,var(--c),color-mix(in srgb,var(--c) 84%,var(--a)));box-shadow:.35rem .35rem 0 var(--fg)}
+.puzzle-card,.maze-card{color:#201813}
+.game-status{margin:.55rem 0;font-size:.85rem;font-weight:700}
+.game-reward{margin:.7rem 0 0;padding:.65rem .8rem;background:#fff3c9;color:#201813;border-left:.35rem solid #bd321e;font-weight:700;animation:aparece .35s both}
+.game-reset{display:inline-block;margin:.15rem 0;padding:.45rem .7rem;border:1px solid #38244f;border-radius:.2rem;background:#38244f;color:#fff3c9;font-weight:700;cursor:pointer}
+.game-reset:hover,.game-reset:focus-visible{background:#bd321e;color:#fff;border-color:#bd321e}
+.gem-board{display:grid;grid-template-columns:repeat(2,minmax(4.5rem,6rem));grid-template-rows:repeat(2,minmax(4.5rem,6rem));gap:.25rem;width:max-content;margin:.65rem auto;padding:.4rem;background:#382b24;border:3px solid #8f302d;box-shadow:inset 0 0 0 2px #f0c16b,0 .25rem 0 #5a3328}
+.gem-piece{display:grid;place-items:center;padding:0;overflow:hidden;border:2px solid #f0c16b;background:#4f3828;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}
+.gem-piece svg{width:100%;height:100%;fill:#e1a934;stroke:#33231a;stroke-width:3;stroke-linejoin:round}
+.gem-piece:hover{transform:scale(1.05);filter:brightness(1.16)}.gem-piece.selected{z-index:1;transform:scale(1.08);box-shadow:0 0 0 4px #bd321e;filter:brightness(1.2)}
+.gem-board.solved{box-shadow:0 0 1rem #f0c16b}
+.maze-card{max-width:26rem}
+.maze-grid{display:grid;grid-template-columns:repeat(7,minmax(1.8rem,2.45rem));grid-template-rows:repeat(7,minmax(1.8rem,2.45rem));gap:3px;width:max-content;margin:.5rem auto;padding:.45rem;background:#172124;border:2px solid #172124;border-radius:.3rem}
+.maze-cell{display:grid;place-items:center;width:100%;aspect-ratio:1;background:#f5e8c9;color:#172124;border-radius:2px;font:bold .85rem/1 system-ui,sans-serif}
+.maze-cell.wall{background:#263237;box-shadow:inset 0 0 0 1px #526066}
+.maze-cell.maze-player{background:#c94b13;color:white;border-radius:50%;box-shadow:0 0 0 2px #f0c16b}
+.maze-cell.maze-exit{background:#d8b958;color:#201813;box-shadow:inset 0 0 0 2px #fff3c9}
+.maze-controls{display:grid;grid-template-columns:repeat(3,2.8rem);gap:.3rem;justify-content:center;margin:.7rem auto}
+.maze-controls button{min-height:2.5rem;border:1px solid #172124;border-radius:.3rem;background:#172124;color:#fff3c9;font-size:1.1rem;font-weight:900;cursor:pointer;box-shadow:0 .2rem 0 #0005}
+.maze-controls button:nth-child(1){grid-column:2}.maze-controls button:nth-child(2){grid-column:1;grid-row:2}.maze-controls button:nth-child(3){grid-column:2;grid-row:2}.maze-controls button:nth-child(4){grid-column:3;grid-row:2}
+.maze-controls button:hover,.maze-controls button:focus-visible{background:#bd321e;translate:0 -2px}
+.maze-grid.bump{animation:sh .18s}
+.maze-grid.solved .maze-cell.maze-player{background:#1c794c}
+@media(max-width:420px){.maze-grid{grid-template-columns:repeat(7,minmax(1.55rem,2rem));grid-template-rows:repeat(7,minmax(1.55rem,2rem));gap:2px}.gem-board{grid-template-columns:repeat(2,5rem);grid-template-rows:repeat(2,5rem)}}
+.gem-piece svg path{fill:none}

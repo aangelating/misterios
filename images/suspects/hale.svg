@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" role="img" aria-label="Retrato ilustrado de Hale">
+<defs><pattern id="grain" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 2h8M2 0v8" stroke="#fff" stroke-opacity=".08" stroke-width=".6"/></pattern><linearGradient id="shade" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient></defs>
+<rect width="240" height="280" fill="#4d665f"/><circle cx="186" cy="66" r="74" fill="#d3b46b" opacity=".22"/><path d="M0 210 Q58 184 112 213 T240 205V280H0Z" fill="#17191b" opacity=".2"/><rect width="240" height="280" fill="url(#grain)"/>
+<path d="M43 280 Q47 209 81 190 L103 178 H137 L160 190 Q195 210 199 280Z" fill="#3b4742"/>
+<path d="M105 165h30v37q-15 13-30 0Z" fill="#d9ad8b"/>
+<ellipse cx="80" cy="127" rx="9" ry="17" fill="#d9ad8b"/><ellipse cx="162" cy="127" rx="9" ry="17" fill="#d9ad8b"/>
+<ellipse cx="121" cy="123" rx="42" ry="53" fill="#d9ad8b"/>
+<path d="M78 105 Q78 49 122 48 Q164 47 168 103 L151 83 Q126 91 105 80 L88 100Z" fill="#302c2b"/>
+<path d="M98 117q10-8 20 0M128 117q10-8 20 0" fill="none" stroke="#382a27" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="108" cy="127" rx="3.2" ry="4" fill="#201c1a"/><ellipse cx="139" cy="127" rx="3.2" ry="4" fill="#201c1a"/>
+<path d="M121 128l-5 17 8 2" fill="none" stroke="#9b6e55" stroke-width="3" stroke-linecap="round"/>
+<path d="M109 158q12 8 24 0" fill="none" stroke="#7e3932" stroke-width="3" stroke-linecap="round"/>
+<path d="M105 191l16 20 15-20" fill="none" stroke="#d3b46b" stroke-width="4"/>
+<circle cx="103" cy="123" r="15" fill="none" stroke="#332b28" stroke-width="4"/><circle cx="143" cy="123" r="15" fill="none" stroke="#332b28" stroke-width="4"/><path d="M118 122h10" stroke="#332b28" stroke-width="4"/><path d="M116 194l7 18 8-18" fill="#e6e1d4"/>
+<rect width="240" height="280" fill="url(#shade)"/><rect x="7" y="7" width="226" height="266" fill="none" stroke="#d3b46b" stroke-opacity=".8" stroke-width="2"/>
+</svg>

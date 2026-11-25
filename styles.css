@@ -263,3 +263,25 @@ body:has(.f:target) .home{background:#e4e0d5;color:#202227}
 .maze-grid.solved .maze-cell.maze-player{background:#1c794c}
 @media(max-width:420px){.maze-grid{grid-template-columns:repeat(7,minmax(1.55rem,2rem));grid-template-rows:repeat(7,minmax(1.55rem,2rem));gap:2px}.gem-board{grid-template-columns:repeat(2,5rem);grid-template-rows:repeat(2,5rem)}}
 .gem-piece svg path{fill:none}
+
+/* Panel lateral de cartas de sospechosos */
+.dossier-toggle{position:fixed;z-index:12;top:4.65rem;right:.8rem;display:flex;align-items:center;gap:.45rem;padding:.55rem .8rem;border:2px solid #d6aa4c;border-radius:.25rem;background:#191a1c;color:#f1e7ce;font:700 .86rem/1 system-ui,sans-serif;box-shadow:0 .25rem 0 #0006;cursor:pointer;transition:transform .2s,background .2s}
+.dossier-toggle[hidden]{display:none}.dossier-toggle:hover,.dossier-toggle:focus-visible{transform:translateY(-2px);background:#8f302d}.dossier-toggle[aria-expanded="true"]{background:#8f302d}
+.dossier-panel{position:fixed;z-index:13;top:0;right:0;bottom:0;width:min(23rem,92vw);padding:1rem;overflow-y:auto;background:#eee5d1;color:#201d1b;border-left:5px solid #8f302d;box-shadow:-.7rem 0 1.6rem #0007;transform:translateX(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);font-family:Georgia,"Times New Roman",serif}
+.dossier-panel[hidden]{display:none}.dossier-panel.open{transform:translateX(0)}
+.dossier-header{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:.7rem;border-bottom:2px solid #302925}
+.dossier-header small{font:800 .65rem/1.3 system-ui,sans-serif;letter-spacing:.16em;color:#8f302d}.dossier-header h2{margin:.25rem 0 0;font-size:1.55rem;line-height:1.1}
+.dossier-header>button{width:2.25rem;height:2.25rem;border:1px solid #302925;border-radius:50%;background:#302925;color:#fff3c9;font-size:1.5rem;line-height:1;cursor:pointer}
+.dossier-list{display:flex;gap:.35rem;margin:.8rem 0;overflow-x:auto;padding:.15rem .1rem .35rem}
+.suspect-tab{flex:none;padding:.4rem .6rem;border:1px solid #6d6253;border-radius:2rem;background:#f8f1df;color:#302925;font:700 .78rem/1.1 system-ui,sans-serif;cursor:pointer}
+.suspect-tab[aria-pressed="true"]{background:#302925;color:#fff3c9;border-color:#302925;box-shadow:0 .15rem 0 #8f302d}
+.dossier-card{position:relative;min-height:22rem;padding:.8rem;background:#faf5e8;border:1px solid #4a4136;box-shadow:.3rem .35rem 0 #8f302d;animation:aparece .25s both}
+.suspect-portrait{position:relative;height:12rem;margin:-.8rem -.8rem .8rem;overflow:hidden;background:#282b2b;border-bottom:3px solid #302925}
+.suspect-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.suspect-stamp{display:inline-block;padding:.2rem .4rem;border:1px solid #8f302d;color:#8f302d;font:800 .62rem/1 system-ui,sans-serif;letter-spacing:.08em;transform:rotate(-2deg)}
+.dossier-card h3{margin:.65rem 0 .15rem;font-size:1.65rem;line-height:1.05}.suspect-role{margin:0 0 .7rem;color:#8f302d;font-size:.9rem;font-style:italic;font-weight:700}
+.suspect-context{padding-top:.65rem;border-top:1px solid #c9bda5;font-size:.95rem;line-height:1.45}
+.suspect-note{margin-top:1rem;padding:.5rem;background:#e9e0ca;color:#494237;font:700 .72rem/1.4 system-ui,sans-serif}
+@media(max-width:560px){.dossier-toggle{top:auto;right:.6rem;bottom:5.1rem;padding:.48rem .65rem}.dossier-panel{width:min(21rem,94vw)}.dossier-card{min-height:18rem}}
+
+/* Retratos ilustrados individuales en las cartas del archivo */

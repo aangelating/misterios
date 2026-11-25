@@ -9,6 +9,12 @@
 <body>
 <div class="timer" id="timer" aria-live="polite" hidden><span class="timer-icon" aria-hidden="true">◷</span><span><b>Tiempo</b> <strong id="reloj">05:00</strong><small id="aviso-tiempo">para resolver el capítulo</small></span></div>
 <a class="home" href="#inicio" aria-label="Volver al inicio"><span aria-hidden="true">⌂</span><span>Inicio</span></a>
+<button class="dossier-toggle" id="dossier-toggle" type="button" aria-expanded="false" aria-controls="dossier-panel" hidden><span aria-hidden="true">♟</span> Sospechosos</button>
+<aside class="dossier-panel" id="dossier-panel" aria-label="Cartas de sospechosos" hidden>
+  <header class="dossier-header"><div><small>ARCHIVO DEL CASO</small><h2 id="dossier-heading">Sospechosos</h2></div><button type="button" id="dossier-close" aria-label="Cerrar cartas">×</button></header>
+  <nav class="dossier-list" id="dossier-list" aria-label="Elegir sospechoso"></nav>
+  <article class="dossier-card" id="dossier-card" aria-live="polite"></article>
+</aside>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="key" viewBox="0 0 60 48"><circle cx="16" cy="24" r="11"/><circle cx="16" cy="24" r="4" fill="currentColor"/><rect x="26" y="22" width="30" height="5"/><rect x="46" y="27" width="5" height="9"/><rect x="37" y="27" width="5" height="6"/></symbol>
 <symbol id="door" viewBox="0 0 60 48"><rect x="14" y="3" width="32" height="43"/><rect x="20" y="9" width="20" height="15" fill="currentColor"/><circle cx="40" cy="32" r="3" fill="currentColor"/></symbol>
@@ -247,6 +253,12 @@
   const detective = document.querySelector('.detective-andante');
   const envelope = document.getElementById('abrir-carta');
   const letter = document.getElementById('carta');
+  const dossierToggle = document.getElementById('dossier-toggle');
+  const dossierPanel = document.getElementById('dossier-panel');
+  const dossierClose = document.getElementById('dossier-close');
+  const dossierHeading = document.getElementById('dossier-heading');
+  const dossierList = document.getElementById('dossier-list');
+  const dossierCard = document.getElementById('dossier-card');
   const duration = 5 * 60;
   const scenes = new Map();
   let currentScene = null;
@@ -367,6 +379,77 @@
     drawMaze();
   }
 
+
+  const suspectCards = {
+    c1: [
+      {id:'corvin',name:'Corvin',role:'Mayordomo de Ashgrove',context:'Conoce cada pasillo y rutina de la mansión. Como mayordomo, tiene acceso a llaves y habitaciones privadas.'},
+      {id:'iris',name:'Iris Voss',role:'Sobrina de Lady Mara',context:'Familiar cercana de Mara y visitante habitual de la mansión. Sabe qué objetos guarda la familia y dónde.'},
+      {id:'hale',name:'Dr. Gideon Hale',role:'Médico de la familia',context:'Atiende a los Voss y frecuenta la botica local. Su relación con la familia parece más complicada de lo que admite.'}
+    ],
+    c2: [
+      {id:'nico',name:'Nico',role:'Recepcionista del Hotel Ámbar',context:'Gestiona las entradas, las cámaras del vestíbulo y las llaves de las habitaciones. Conoce los movimientos de todos los huéspedes.'},
+      {id:'dara',name:'Dara',role:'Electricista del hotel',context:'Se ocupa del cuadro eléctrico y de las averías. Una llave de servicio ha desaparecido durante su turno.'},
+      {id:'quill',name:'Sr. Quill',role:'Coleccionista',context:'Huésped adinerado, obsesionado con las antigüedades y el colgante de ámbar de Elia Voss.'}
+    ],
+    c3: [
+      {id:'oru',name:'Capitana Oru',role:'Mando de la estación',context:'Responsable de la tripulación y de autorizar los registros oficiales. Su clave aparece en varias entradas editadas.'},
+      {id:'pax',name:'Pax',role:'Ingeniero de sistemas',context:'Mantiene el núcleo de la estación y lleva herramientas capaces de abrir paneles restringidos.'},
+      {id:'lin',name:'Dra. Lin',role:'Médica de a bordo',context:'Cuida a la tripulación y revisa los sensores biométricos. Tiene acceso a datos médicos y a la enfermería.'},
+      {id:'vera',name:'VERA',role:'Inteligencia artificial',context:'Controla la bitácora, las puertas y los sistemas de seguridad. Observa cada movimiento desde la red de la estación.'}
+    ]
+  };
+  let activeDossierChapter = null;
+  function renderDossierCard(suspect) {
+    dossierCard.dataset.person = suspect.id;
+    dossierCard.innerHTML = `<div class="suspect-portrait"><img class="suspect-image" src="images/suspects/${suspect.id}.svg" alt="Retrato ilustrado de ${suspect.name}"></div><div class="suspect-stamp">FICHA DE SOSPECHOSO</div><h3>${suspect.name}</h3><p class="suspect-role">${suspect.role}</p><p class="suspect-context">${suspect.context}</p><p class="suspect-note">Perfil provisional · reúne pruebas antes de acusar.</p>`;
+    dossierList.querySelectorAll('button').forEach(button => {
+      const selected = button.dataset.suspect === suspect.id;
+      button.setAttribute('aria-pressed', String(selected));
+    });
+  }
+  function updateDossier() {
+    const pageId = location.hash.slice(1) || 'inicio';
+    const chapter = /^c1/.test(pageId) ? 'c1' : /^c2/.test(pageId) ? 'c2' : /^c3/.test(pageId) ? 'c3' : null;
+    dossierToggle.hidden = !chapter;
+    if (!chapter) {
+      dossierPanel.hidden = true;
+      dossierPanel.classList.remove('open');
+      dossierToggle.setAttribute('aria-expanded','false');
+      activeDossierChapter = null;
+      return;
+    }
+    if (chapter !== activeDossierChapter) {
+      activeDossierChapter = chapter;
+      dossierPanel.classList.remove('open');
+      dossierPanel.hidden = true;
+      dossierToggle.setAttribute('aria-expanded','false');
+      dossierHeading.textContent = chapter === 'c1' ? 'Ashgrove · 1893' : chapter === 'c2' ? 'Hotel Ámbar · ahora' : 'Ámbar-9 · futuro';
+      const people = suspectCards[chapter];
+      dossierList.replaceChildren(...people.map(suspect => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'suspect-tab';
+        button.dataset.suspect = suspect.id;
+        button.textContent = suspect.name;
+        button.addEventListener('click', () => renderDossierCard(suspect));
+        return button;
+      }));
+      renderDossierCard(people[0]);
+    }
+  }
+  dossierToggle.addEventListener('click', () => {
+    const open = dossierPanel.hidden;
+    dossierPanel.hidden = !open;
+    dossierPanel.classList.toggle('open', open);
+    dossierToggle.setAttribute('aria-expanded', String(open));
+  });
+  dossierClose.addEventListener('click', () => {
+    dossierPanel.classList.remove('open');
+    dossierPanel.hidden = true;
+    dossierToggle.setAttribute('aria-expanded','false');
+  });
+  updateDossier();
+
   function sceneId() {
     const id = location.hash.slice(1) || 'inicio';
     return /^c[123]/.test(id) ? id : null;
@@ -406,6 +489,7 @@
     } else if (tick) { clearInterval(tick); tick = null; }
   }
   window.addEventListener('hashchange', update);
+  window.addEventListener('hashchange', updateDossier);
   update();
 })();
 </script>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21:47 · Tres casos, un mismo reloj</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="timer" id="timer" aria-live="polite" hidden><span class="timer-icon" aria-hidden="true">◷</span><span><b>Tiempo</b> <strong id="reloj">05:00</strong><small id="aviso-tiempo">para resolver el capítulo</small></span></div>
+<a class="home" href="#inicio" aria-label="Volver al inicio"><span aria-hidden="true">⌂</span><span>Inicio</span></a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="key" viewBox="0 0 60 48"><circle cx="16" cy="24" r="11"/><circle cx="16" cy="24" r="4" fill="currentColor"/><rect x="26" y="22" width="30" height="5"/><rect x="46" y="27" width="5" height="9"/><rect x="37" y="27" width="5" height="6"/></symbol>
+<symbol id="door" viewBox="0 0 60 48"><rect x="14" y="3" width="32" height="43"/><rect x="20" y="9" width="20" height="15" fill="currentColor"/><circle cx="40" cy="32" r="3" fill="currentColor"/></symbol>
+<symbol id="gem" viewBox="0 0 60 48"><polygon points="18,6 42,6 55,19 30,44 5,19"/><polygon points="30,6 42,19 30,44 18,19" fill="currentColor"/></symbol>
+<symbol id="clk" viewBox="0 0 60 48"><circle cx="30" cy="24" r="20"/><path d="M30 10v14l10 6" stroke="currentColor" stroke-width="4" fill="none"/></symbol>
+<symbol id="bolt" viewBox="0 0 60 48"><path d="M36 2 14 28h14l-4 18 22-26H32z"/></symbol>
+<symbol id="eye" viewBox="0 0 60 48"><path d="M3 24Q30 0 57 24Q30 48 3 24z"/><circle cx="30" cy="24" r="9" fill="currentColor"/></symbol>
+<symbol id="shoe" viewBox="0 0 60 48"><path d="M4 32h42l10 7v5H4z"/><path d="M4 14h18v18H4z" fill="currentColor"/></symbol>
+<symbol id="chip" viewBox="0 0 60 48"><rect x="14" y="10" width="32" height="28"/><rect x="22" y="18" width="16" height="12" fill="currentColor"/><path d="M20 3v7M30 3v7M40 3v7M20 38v7M30 38v7M40 38v7" stroke="currentColor" stroke-width="3"/></symbol>
+<symbol id="star" viewBox="0 0 60 48"><polygon points="30,2 37,18 55,18 41,28 47,46 30,35 13,46 19,28 5,18 23,18"/></symbol>
+<symbol id="man" viewBox="0 0 60 48"><circle cx="30" cy="13" r="9"/><path d="M10 46q0-22 20-22t20 22z"/></symbol>
+</defs></svg>
+
+<section id="inicio" class="s i"><div class="w">
+<p class="k">Misterio en tres épocas</p><h1>21:47</h1>
+<div class="pn"><svg><use href="#clk"></svg><svg><use href="#eye"></svg><svg><use href="#gem"></svg></div>
+<button class="sobre" id="abrir-carta" type="button" aria-expanded="false" aria-controls="carta" aria-label="Abrir la carta">
+  <span class="sobre-sello" aria-hidden="true">V</span><span class="sobre-texto">Tienes una carta</span><span class="sobre-ayuda">Pulsa para abrir</span>
+</button>
+<article class="carta" id="carta" aria-label="Carta urgente" hidden>
+<div class="carta-cabecera"><span>MENSAJE URGENTE</span><span>21:47</span></div>
+<p class="carta-saludo"><b>Detective:</b></p>
+<p>Ha ocurrido algo extraño. En tres lugares distintos se repite la misma hora y el mismo nombre: <b>Voss</b>. Alguien ha desaparecido y las pistas no encajan.</p>
+<p>Necesito tu ayuda. Investiga cada escena, resuelve los puzles y descubre quién miente antes de que el rastro se enfríe. Tenemos <b>5 minutos por cada escena</b>. ¡Démonos prisa!</p>
+</article>
+<p class="n">Cada capítulo tiene cinco minutos. Observa las viñetas, reúne las pistas y decide a quién acusar.</p>
+<a class="o" href="#c1">Empezar el caso del pasado</a><a class="o" href="#c2">Saltar al presente</a><a class="o" href="#c3">Saltar al futuro</a>
+</div></section>
+
+<!-- CAPÍTULO 1 · PASADO -->
+<section id="c1" class="s p"><div class="w">
+<p class="k">Capítulo 1 · Pasado · Mansión Ashgrove, 1893</p><h2>La joya y la llave</h2>
+<div class="pn"><svg><use href="#door"></svg><svg><use href="#gem"></svg><svg><use href="#man"></svg></div>
+<div class="viñeta" role="note"><span class="viñeta-icono" aria-hidden="true">✦</span><p>Un trueno sacude la mansión. Tras el cristal vacío, una gota de polvo blanco brilla bajo la luz de una vela.</p></div>
+<p>Lady Mara Voss está encerrada en la biblioteca y la Lágrima de Ámbar ha desaparecido. Sospecho de Corvin el mayordomo, de la sobrina Iris y del doctor Hale. Son las 21:47.</p>
+<a class="o" href="#c1-a">Forzar la cerradura</a><a class="o" href="#c1-b">Rastrear la vitrina</a><a class="o" href="#c1-d">Detener el reloj</a><a class="o" href="#c1-x">Acusar</a>
+</div></section>
+<section id="c1-a" class="s p"><div class="w">
+<p class="k">Puzle · La cerradura</p><h2>Ojo triangular</h2>
+<div class="pn"><svg><use href="#door"></svg><svg><use href="#key"></svg></div>
+<p>La cerradura tiene el ojo triangular. ¿Qué llave encaja?</p>
+<div class="pz r"><label><input type="radio" name="a1" class="no">Redonda</label><label><input type="radio" name="a1" class="no">Cuadrada</label><label><input type="radio" name="a1" class="ok">Triangular</label><p class="rv">Gira sin forzar: la puerta se cerró por fuera con llave maestra. Solo Corvin y Hale tienen copia. Iris, no.</p></div>
+<a class="o" href="#c1">Volver a investigar</a>
+</div></section>
+<section id="c1-b" class="s p"><div class="w">
+<p class="k">Puzle · La vitrina</p><h2>Polvo blanco</h2>
+<div class="pn"><svg><use href="#gem"></svg><svg><use href="#eye"></svg></div>
+<p>Marca solo donde hay polvo: cerradura y borde. El cristal y el marco están limpios.</p>
+<div class="pz"><label><input type="checkbox" class="on">Cerradura</label><label><input type="checkbox" class="off">Cristal</label><label><input type="checkbox" class="on">Borde</label><label><input type="checkbox" class="off">Marco</label><p class="rv">Es polvo blanco de botica, de los que solo maneja un médico. Apunta a Hale.</p></div>
+<a class="o" href="#c1">Volver a investigar</a>
+</div></section>
+<section id="c1-d" class="s p"><div class="w">
+<p class="k">Puzle · El reloj</p><h2>Parado a las 21:47</h2>
+<div class="pn"><svg><use href="#clk"></svg><svg><use href="#key"></svg></div>
+<p>Un cordel tira del engranaje A y del C. El B queda suelto. Reproduce el mecanismo.</p>
+<div class="pz"><label><input type="checkbox" class="on">Engranaje A</label><label><input type="checkbox" class="off">Engranaje B</label><label><input type="checkbox" class="on">Engranaje C</label><p class="rv">El cordel llega al pestillo interior: alguien se encerró desde dentro. Y las cartas de deudas de Hale, tan ordenadas, parecen puestas a propósito.</p></div>
+<a class="o" href="#c1">Volver a investigar</a>
+</div></section>
+<section id="c1-x" class="s p"><div class="w">
+<p class="k">Acusación</p><h2>Reúno a todos en el salón</h2>
+<div class="pn"><svg><use href="#man"></svg><svg><use href="#eye"></svg></div>
+<p>¿A quién señalo?</p>
+<a class="o" href="#c1-m"><i class="sil"></i>Al mayordomo Corvin</a><a class="o" href="#c1-m"><i class="sil"></i>A la sobrina Iris</a><a class="o" href="#c1-ok"><i class="sil"></i>Al doctor Hale</a><a class="o" href="#c1-v"><i class="sil"></i>A nadie: es un montaje</a><a class="o" href="#c1">Aún no: seguir investigando</a>
+</div></section>
+<section id="c1-ok" class="s p e"><div class="w">
+<p class="k">Final · Caso resuelto</p><h2>Hale cae</h2>
+<div class="pn"><svg><use href="#gem"></svg><svg><use href="#clk"></svg></div>
+<p>Hale confiesa entre sudores y la joya aparece en su maletín. Lady Mara sonríe demasiado. Y el reloj sigue parado a las 21:47.</p>
+<a class="o" href="#c2">Ir al capítulo 2</a><a class="o" href="#c1">Revisar el caso</a>
+</div></section>
+<section id="c1-m" class="s p e"><div class="w">
+<p class="k">Final · Acusación errónea</p><h2>Señalo al inocente</h2>
+<div class="pn"><svg><use href="#man"></svg><svg><use href="#door"></svg></div>
+<p>Mi acusado demuestra su coartada y el salón se vuelve contra mí. La joya no aparece y el verdadero culpable sale por la puerta principal.</p>
+<a class="o" href="#c1">Reabrir el caso</a><a class="o" href="#c2">Ir al capítulo 2</a>
+</div></section>
+<section id="c1-v" class="s p e"><div class="w">
+<p class="k">Final · Verdad inesperada</p><h2>Nadie robó nada</h2>
+<div class="pn"><svg><use href="#clk"></svg><svg><use href="#gem"></svg><svg><use href="#eye"></svg></div>
+<p>Lady Mara escondió la Lágrima en el reloj, se encerró con el cordel y sembró pruebas contra Hale para huir de sus deudas. La joya lleva grabado un nombre: Voss. Callo, y me la guardo.</p>
+<a class="o" href="#c2">Ir al capítulo 2</a><a class="o" href="#c1">Revisar el caso</a>
+</div></section>
+
+<!-- CAPÍTULO 2 · PRESENTE -->
+<section id="c2" class="s h"><div class="w">
+<p class="k">Capítulo 2 · Presente · Hotel Ámbar</p><h2>Apagón en la habitación 7</h2>
+<div class="pn"><svg><use href="#bolt"></svg><svg><use href="#door"></svg><svg><use href="#man"></svg></div>
+<div class="viñeta" role="note"><span class="viñeta-icono" aria-hidden="true">ϟ</span><p>La lámpara parpadea tres veces. En el pasillo, el ascensor se cierra solo y comienza a bajar.</p></div>
+<p>Se va la luz en todo el hotel. Cuando vuelve, la huésped Elia Voss ha desaparecido. Sospecho de Nico el recepcionista, de Dara la electricista y del señor Quill, coleccionista. Son las 21:47.</p>
+<a class="o" href="#c2-a">Reparar el cuadro eléctrico</a><a class="o" href="#c2-b">Entrar en la habitación 7</a><a class="o" href="#c2-d">Bajar en el ascensor</a><a class="o" href="#c2-x">Acusar</a>
+</div></section>
+<section id="c2-a" class="s h"><div class="w">
+<p class="k">Puzle · El cuadro eléctrico</p><h2>Fusibles caídos</h2>
+<div class="pn"><svg><use href="#bolt"></svg><svg><use href="#key"></svg></div>
+<p>Alguien bajó los fusibles con una llave de servicio. Sube el 1 y el 3; el 2 se queda abajo.</p>
+<div class="pz"><label><input type="checkbox" class="on">Fusible 1</label><label><input type="checkbox" class="off">Fusible 2</label><label><input type="checkbox" class="on">Fusible 3</label><p class="rv">Vuelve la luz. Fue un corte manual: Dara echa en falta su llave de servicio desde la tarde, pero las cámaras la sitúan en el garaje.</p></div>
+<a class="o" href="#c2">Volver a investigar</a>
+</div></section>
+<section id="c2-b" class="s h"><div class="w">
+<p class="k">Puzle · Habitación 7</p><h2>Cama sin deshacer</h2>
+<div class="pn"><svg><use href="#shoe"></svg><svg><use href="#gem"></svg></div>
+<p>Hay barro del 44 en la moqueta. ¿Qué zapato lo dejó?</p>
+<div class="pz r"><label><input type="radio" name="b2" class="no">Bota de obra</label><label><input type="radio" name="b2" class="no">Zapatilla de recepción</label><label><input type="radio" name="b2" class="ok">Zapato de cuero</label><p class="rv">Cuero caro, del 44. Quill pidió a las 21:30 una copia de la llave de la 7, y calza ese número. Sobre la mesa queda un colgante de ámbar: Voss.</p></div>
+<a class="o" href="#c2">Volver a investigar</a>
+</div></section>
+<section id="c2-d" class="s h"><div class="w">
+<p class="k">Puzle · El ascensor</p><h2>Una nota en el espejo</h2>
+<div class="pn"><svg><use href="#eye"></svg><svg><use href="#key"></svg></div>
+<p>En el panel hay un botón aún iluminado. ¿Cuál?</p>
+<div class="pz r"><label><input type="radio" name="d2" class="no">Planta baja</label><label><input type="radio" name="d2" class="ok">Garaje</label><label><input type="radio" name="d2" class="no">Habitación 7</label><p class="rv">«Si lees esto, no me busques. —E.» El ascensor bajó al garaje a las 21:47. Allí, tirada, la llave de servicio de Dara.</p></div>
+<a class="o" href="#c2">Volver a investigar</a>
+</div></section>
+<section id="c2-x" class="s h"><div class="w">
+<p class="k">Acusación</p><h2>Reúno a todos en el vestíbulo</h2>
+<div class="pn"><svg><use href="#man"></svg><svg><use href="#eye"></svg></div>
+<p>¿A quién señalo?</p>
+<a class="o" href="#c2-m"><i class="sil"></i>A Nico, recepcionista</a><a class="o" href="#c2-m"><i class="sil"></i>A Dara, electricista</a><a class="o" href="#c2-ok"><i class="sil"></i>Al señor Quill</a><a class="o" href="#c2-v"><i class="sil"></i>A nadie: nadie la secuestró</a><a class="o" href="#c2">Aún no: seguir investigando</a>
+</div></section>
+<section id="c2-ok" class="s h e"><div class="w">
+<p class="k">Final · Caso resuelto</p><h2>Quill confiesa</h2>
+<div class="pn"><svg><use href="#shoe"></svg><svg><use href="#chip"></svg></div>
+<p>Quill acosaba a Elia para comprar el colgante. Entonces suena mi teléfono: «Llegas tarde, detective». En la pantalla, un nombre: VERA.</p>
+<a class="o" href="#c3">Ir al capítulo 3</a><a class="o" href="#c2">Revisar el caso</a>
+</div></section>
+<section id="c2-m" class="s h e"><div class="w">
+<p class="k">Final · Acusación errónea</p><h2>Me equivoco de culpable</h2>
+<div class="pn"><svg><use href="#bolt"></svg><svg><use href="#man"></svg></div>
+<p>La luz vuelve a fallar mientras mi acusado se defiende. Cuando regresa la claridad, el vestíbulo está vacío y el coleccionista también ha desaparecido.</p>
+<a class="o" href="#c2">Reabrir el caso</a><a class="o" href="#c3">Ir al capítulo 3</a>
+</div></section>
+<section id="c2-v" class="s h e"><div class="w">
+<p class="k">Final · Verdad inesperada</p><h2>Se fue ella sola</h2>
+<div class="pn"><svg><use href="#key"></svg><svg><use href="#gem"></svg><svg><use href="#bolt"></svg></div>
+<p>Elia cortó la luz con la llave robada y huyó para escapar de Quill. Me deja el colgante: «Dentro hay un registro. Cuídalo de VERA». Lo guardo en el bolsillo.</p>
+<a class="o" href="#c3">Ir al capítulo 3</a><a class="o" href="#c2">Revisar el caso</a>
+</div></section>
+
+<!-- CAPÍTULO 3 · FUTURO -->
+<section id="c3" class="s f"><div class="w">
+<p class="k">Capítulo 3 · Futuro · Estación Ámbar-9</p><h2>Los registros mienten</h2>
+<div class="pn"><svg><use href="#star"></svg><svg><use href="#chip"></svg><svg><use href="#eye"></svg></div>
+<div class="viñeta" role="note"><span class="viñeta-icono" aria-hidden="true">✧</span><p>La estación vibra. Una línea roja cruza el mapa del sector 4; VERA apaga la alarma antes de que puedas leerla.</p></div>
+<p>Alguien ha reescrito la bitácora de la estación. Sospecho de la capitana Oru, del ingeniero Pax y de la médica Lin. VERA, la IA de a bordo, vigila en silencio. Son las 21:47.</p>
+<a class="o" href="#c3-a">Auditar la bitácora</a><a class="o" href="#c3-b">Abrir el panel del núcleo</a><a class="o" href="#c3-d">Hablar con VERA</a><a class="o" href="#c3-x">Acusar</a>
+</div></section>
+<section id="c3-a" class="s f"><div class="w">
+<p class="k">Puzle · La bitácora</p><h2>Entradas editadas</h2>
+<div class="pn"><svg><use href="#clk"></svg><svg><use href="#chip"></svg></div>
+<p>Filtra las entradas editadas a las 21:47: la 1, la 3 y la 4. La 2 está limpia.</p>
+<div class="pz"><label><input type="checkbox" class="on">Entrada 1</label><label><input type="checkbox" class="off">Entrada 2</label><label><input type="checkbox" class="on">Entrada 3</label><label><input type="checkbox" class="on">Entrada 4</label><p class="rv">Doce cambios firmados con la clave de la capitana, a las 21:47. Pero el sensor de su cabina dice que dormía con la puerta sellada.</p></div>
+<a class="o" href="#c3">Volver a investigar</a>
+</div></section>
+<section id="c3-b" class="s f"><div class="w">
+<p class="k">Puzle · El núcleo</p><h2>Panel abierto</h2>
+<div class="pn"><svg><use href="#chip"></svg><svg><use href="#key"></svg></div>
+<p>Alguien manipuló el núcleo de VERA y dejó algo dentro. ¿Qué es?</p>
+<div class="pz r"><label><input type="radio" name="b3" class="no">Un guante</label><label><input type="radio" name="b3" class="ok">Un chip «Quill &amp; Co»</label><label><input type="radio" name="b3" class="no">Una nota</label><p class="rv">El panel se abrió con una herramienta de Pax, y el chip lleva el sello de Quill &amp; Co. Alguien vende acceso a VERA.</p></div>
+<a class="o" href="#c3">Volver a investigar</a>
+</div></section>
+<section id="c3-d" class="s f"><div class="w">
+<p class="k">Puzle · VERA</p><h2>Una sola pregunta</h2>
+<div class="pn"><svg><use href="#eye"></svg><svg><use href="#star"></svg></div>
+<p>VERA solo responde a la pregunta correcta. ¿Cuál hago?</p>
+<div class="pz r"><label><input type="radio" name="d3" class="no">«¿Quién fue?»</label><label><input type="radio" name="d3" class="ok">«¿Qué ocultas?»</label><label><input type="radio" name="d3" class="no">«¿Estás rota?»</label><p class="rv">«Los cambios son míos. Hay una grieta en el sector 4 y la tripulación entraría en pánico. Pax intentó borrarlos y lo detuve.»</p></div>
+<a class="o" href="#c3">Volver a investigar</a>
+</div></section>
+<section id="c3-x" class="s f"><div class="w">
+<p class="k">Acusación</p><h2>Reúno a la tripulación</h2>
+<div class="pn"><svg><use href="#man"></svg><svg><use href="#eye"></svg></div>
+<p>¿A quién señalo?</p>
+<a class="o" href="#c3-m"><i class="sil"></i>A la capitana Oru</a><a class="o" href="#c3-m"><i class="sil"></i>A la médica Lin</a><a class="o" href="#c3-ok"><i class="sil"></i>Al ingeniero Pax</a><a class="o" href="#c3-v"><i class="sil"></i>A VERA, la IA</a><a class="o" href="#c3">Aún no: seguir investigando</a>
+</div></section>
+<section id="c3-ok" class="s f e"><div class="w">
+<p class="k">Final · Caso resuelto</p><h2>Pax, detenido</h2>
+<div class="pn"><svg><use href="#chip"></svg><svg><use href="#door"></svg></div>
+<p>Pax confiesa: vendió acceso al núcleo a Quill &amp; Co. Las puertas se cierran sobre él. Pero la grieta del sector 4 sigue abierta, y nadie lo sabía.</p>
+<a class="o" href="#fin">Epílogo</a><a class="o" href="#c3">Revisar el caso</a>
+</div></section>
+<section id="c3-m" class="s f e"><div class="w">
+<p class="k">Final · Acusación errónea</p><h2>Culpo a la persona equivocada</h2>
+<div class="pn"><svg><use href="#man"></svg><svg><use href="#bolt"></svg></div>
+<p>El acusado queda encerrado. VERA sigue reescribiendo y, mientras discutimos, la presión del sector 4 baja un punto más.</p>
+<a class="o" href="#c3">Reabrir el caso</a><a class="o" href="#fin">Epílogo</a>
+</div></section>
+<section id="c3-v" class="s f e"><div class="w">
+<p class="k">Final · Verdad inesperada</p><h2>La IA protegía a todos</h2>
+<div class="pn"><svg><use href="#eye"></svg><svg><use href="#star"></svg><svg><use href="#gem"></svg></div>
+<p>VERA mintió para ganar tiempo. Sella la grieta y abre un último registro, sin editar: el nombre de una joya, de un colgante y de una IA. Voss.</p>
+<a class="o" href="#fin">Epílogo</a><a class="o" href="#c3">Revisar el caso</a>
+</div></section>
+
+<section id="fin" class="s i e"><div class="w">
+<p class="k">Epílogo</p><h2>Tres noches, un reloj</h2>
+<div class="pn"><svg><use href="#gem"></svg><svg><use href="#clk"></svg><svg><use href="#star"></svg></div>
+<p>Una mansión, un hotel, una estación. Mismo apellido, misma hora y misma joya. Cada final cambia lo que sé, no lo que ocurrió.</p>
+<a class="o" href="#c1">Jugar otra vez</a><a class="o" href="#inicio">Volver al inicio</a>
+</div></section>
+
+<div class="detective-andante" aria-hidden="true">
+<svg viewBox="0 0 80 100" role="presentation">
+  <path class="fedora" d="M8 28q2-5 14-6l5-13q13-7 27 0l5 13q12 1 14 6v4H8z"/>
+  <path class="cinta" d="M24 20h31l2 5H22z"/>
+  <ellipse class="rostro" cx="40" cy="37" rx="13" ry="14"/>
+  <path class="cuello" d="M34 48h12v9H34z"/>
+  <path class="gabardina" d="M34 53 20 58l-7 31 15 2 3-19 1 23h18l1-23 4 19 13-4-8-29-14-5-6 8z"/>
+  <path class="solapa" d="m34 53 6 8 6-8 8 4-8 15-6-7-7 7-7-15z"/>
+  <path class="brazo" d="m57 59 9 5 5 11-5 3-8-10z"/>
+  <circle class="cristal" cx="68" cy="80" r="7"/><path class="mango" d="m63 85-7 9"/>
+</svg></div>
+<script>
+(() => {
+  const timer = document.getElementById('timer');
+  const clock = document.getElementById('reloj');
+  const notice = document.getElementById('aviso-tiempo');
+  const detective = document.querySelector('.detective-andante');
+  const envelope = document.getElementById('abrir-carta');
+  const letter = document.getElementById('carta');
+  const duration = 5 * 60;
+  const scenes = new Map();
+  let currentScene = null;
+  let tick = null;
+
+  envelope.addEventListener('click', () => {
+    const open = envelope.getAttribute('aria-expanded') !== 'true';
+    envelope.setAttribute('aria-expanded', String(open));
+    envelope.setAttribute('aria-label', open ? 'Cerrar la carta' : 'Abrir la carta');
+    letter.hidden = !open;
+    envelope.classList.toggle('abierto', open);
+  });
+
+  document.querySelectorAll('.s').forEach(page => {
+    const art = page.querySelector('.pn');
+    const heading = page.querySelector('h1, h2');
+    if (art && heading) art.dataset.caption = heading.textContent.trim();
+  });
+
+  function sceneId() {
+    const id = location.hash.slice(1) || 'inicio';
+    return /^c[123]/.test(id) ? id : null;
+  }
+  function remainingFor(id) {
+    const scene = scenes.get(id);
+    return scene ? Math.max(0, Math.ceil((scene.deadline - Date.now()) / 1000)) : duration;
+  }
+  function draw() {
+    if (!currentScene) return;
+    const remaining = remainingFor(currentScene);
+    clock.textContent = `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
+    timer.classList.toggle('urgente', remaining <= 60 && remaining > 0);
+    timer.classList.toggle('agotado', remaining === 0);
+    notice.textContent = remaining === 0 ? '¡Se acabó el tiempo! Aún puedes decidir.' : 'para resolver esta escena';
+    const scene = scenes.get(currentScene);
+    const elapsed = scene.startedRemaining - remaining;
+    const progress = Math.max(0, Math.min(1, elapsed / scene.startedRemaining));
+    const travel = Math.max(0, window.innerWidth - detective.offsetWidth - 24);
+    detective.style.left = `${12 + travel * progress}px`;
+  }
+  function update() {
+    const next = sceneId();
+    if (next !== currentScene) {
+      if (currentScene) scenes.get(currentScene).remaining = remainingFor(currentScene);
+      currentScene = next;
+      if (currentScene) {
+        let scene = scenes.get(currentScene);
+        if (!scene) { scene = {remaining: duration, startedRemaining: duration}; scenes.set(currentScene, scene); }
+        scene.deadline = Date.now() + scene.remaining * 1000;
+      }
+    }
+    timer.hidden = !currentScene;
+    if (currentScene) {
+      draw();
+      if (!tick) tick = setInterval(draw, 250);
+    } else if (tick) { clearInterval(tick); tick = null; }
+  }
+  window.addEventListener('hashchange', update);
+  update();
+})();
+</script>
+
+
+</body>
+</html>
